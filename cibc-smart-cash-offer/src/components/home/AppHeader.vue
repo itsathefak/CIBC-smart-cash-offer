@@ -1,7 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
     <div class="container">
-      <!-- Use router-link for the logo to navigate to /home -->
       <router-link class="navbar-brand" to="/home">
         <img src="../../assets/cibc.png" alt="CIBC Logo" height="30">
       </router-link>
@@ -11,20 +10,39 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item" v-for="item in menuItems" :key="item">
-            <!-- Use router-link for "About Us" -->
             <router-link v-if="item === 'About Us'" class="nav-link" to="/about">{{ item }}</router-link>
-            <!-- Keep normal link for other items -->
             <a v-else class="nav-link" href="#">{{ item }}</a>
           </li>
         </ul>
-        <button class="btn btn-theme ms-3" @click="$emit('open-application')">Sign On</button>
+        <router-link v-if="!isSignedIn" to="/sign-on">
+          <button class="btn btn-theme ms-3">Sign On</button>
+        </router-link>
+        <button v-else @click="signOut" class="btn btn-theme ms-3">Sign Out</button>
       </div>
     </div>
   </nav>
 </template>
 
 <script setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 const menuItems = ['Personal Banking', 'Business Banking', 'Investing', 'About Us'];
+const isSignedIn = ref(false);
+
+const signOut = () => {
+  isSignedIn.value = false;
+  // Add any additional sign-out logic here (e.g., clearing user data)
+  router.push('/home'); // Redirect to home page after sign-out
+};
+
+// Function to update sign-in status
+const updateSignInStatus = (status) => {
+  isSignedIn.value = status;
+};
+
+defineExpose({ updateSignInStatus });
 </script>
 
 <style scoped>
@@ -62,3 +80,4 @@ const menuItems = ['Personal Banking', 'Business Banking', 'Investing', 'About U
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 </style>
+
