@@ -1,16 +1,20 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
     <div class="container">
-      <a class="navbar-brand" href="#">
+      <!-- Use router-link for the logo to navigate to /home -->
+      <router-link class="navbar-brand" to="/home">
         <img src="../../assets/cibc.png" alt="CIBC Logo" height="30">
-      </a>
+      </router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item" v-for="item in menuItems" :key="item">
-            <a class="nav-link" href="#">{{ item }}</a>
+            <!-- Use router-link for "About Us" -->
+            <router-link v-if="item === 'About Us'" class="nav-link" to="/about">{{ item }}</router-link>
+            <!-- Keep normal link for other items -->
+            <a v-else class="nav-link" href="#">{{ item }}</a>
           </li>
         </ul>
         <button class="btn btn-theme ms-3" @click="$emit('open-application')">Sign On</button>
@@ -58,4 +62,3 @@ const menuItems = ['Personal Banking', 'Business Banking', 'Investing', 'About U
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 </style>
-
