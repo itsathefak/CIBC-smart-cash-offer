@@ -1,74 +1,71 @@
 <template>
-    <div ref="applicationModal" class="modal fade" id="applicationModal" tabindex="-1" aria-labelledby="applicationModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="applicationModalLabel">Apply for a Credit Card</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div class="modal fade" id="applicationModal" tabindex="-1" aria-labelledby="applicationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="applicationModalLabel">Apply for a Credit Card</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Success Message -->
+          <div v-if="successMessage" class="alert alert-success text-center">
+            {{ successMessage }}
           </div>
-          <div class="modal-body">
-            <!-- Success Message -->
-            <div v-if="successMessage" class="alert alert-success text-center">
-              {{ successMessage }}
+          
+          <!-- Card Selection -->
+          <div v-if="!successMessage" class="card-selection text-center mb-4">
+            <div v-for="(card, index) in cards" :key="index" class="card-option" @click="selectCard(card)">
+              <img :src="card.image" :alt="card.name" class="card-img" :class="{ 'selected': selectedCard.name === card.name }">
+              <p>{{ card.name }}</p>
             </div>
-            
-            <!-- Card Selection -->
-            <div v-if="!successMessage" class="card-selection text-center mb-4">
-              <div v-for="(card, index) in cards" :key="index" class="card-option" @click="selectCard(card)">
-                <img :src="card.image" :alt="card.name" class="card-img" :class="{ 'selected': selectedCard.name === card.name }">
-                <p>{{ card.name }}</p>
-              </div>
-            </div>
-            
-            <h6 v-if="!successMessage" class="text-center">Selected Card:</h6>
-            <div v-if="!successMessage" class="selected-card-preview text-center">
-              <img v-if="selectedCard.image" :src="selectedCard.image" :alt="selectedCard.name" class="img-fluid">
-              <p>{{ selectedCard.name }}</p>
-            </div>
-            
-            <!-- Form -->
-            <form v-if="!successMessage" @submit.prevent="submitApplication">
-              <div class="mb-3">
-                <label for="fullName" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="fullName" v-model="form.fullName" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" v-model="form.email" required>
-              </div>
-              <div class="mb-3">
-                <label for="phone" class="form-label">Phone Number</label>
-                <input type="tel" class="form-control" id="phone" v-model="form.phone" required>
-              </div>
-              <div class="mb-3">
-                <label for="income" class="form-label">Annual Income</label>
-                <input type="number" class="form-control" id="income" v-model="form.income" required>
-              </div>
-              <div class="mb-3">
-                <label for="address" class="form-label">Address</label>
-                <input type="text" class="form-control" id="address" v-model="form.address" required>
-              </div>
-              <div class="text-center">
-                <button type="submit" class="btn btn-theme btn-lg">Submit Application</button>
-              </div>
-            </form>
           </div>
+          
+          <h6 v-if="!successMessage" class="text-center">Selected Card:</h6>
+          <div v-if="!successMessage" class="selected-card-preview text-center">
+            <img v-if="selectedCard.image" :src="selectedCard.image" :alt="selectedCard.name" class="img-fluid">
+            <p>{{ selectedCard.name }}</p>
+          </div>
+          
+          <!-- Form -->
+          <form v-if="!successMessage" @submit.prevent="submitApplication">
+            <div class="mb-3">
+              <label for="fullName" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="fullName" v-model="form.fullName" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" v-model="form.email" required>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" id="phone" v-model="form.phone" required>
+            </div>
+            <div class="mb-3">
+              <label for="income" class="form-label">Annual Income</label>
+              <input type="number" class="form-control" id="income" v-model="form.income" required>
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control" id="address" v-model="form.address" required>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-theme btn-lg">Submit Application</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </template>
-  
-  
-  
-  <script setup>
+  </div>
+</template>
+
+<script setup>
 import { ref, onMounted } from 'vue';
 import { Modal } from 'bootstrap';
 
-// Modal reference
-let applicationModal = null;
+let modalInstance = null;
 
 onMounted(() => {
-  applicationModal = new Modal(document.getElementById('applicationModal'));
+  modalInstance = new Modal(document.getElementById('applicationModal'));
 });
 
 const cards = ref([
@@ -102,10 +99,20 @@ const submitApplication = () => {
   
   // Close the modal after 2 seconds
   setTimeout(() => {
-    applicationModal.hide();
-  }, 2000); // Close modal after 2 seconds
-  
+    modalInstance.hide();
+    // Reset form and success message after modal is closed
+    form.value = { fullName: '', email: '', phone: '', income: '', address: '' };
+    successMessage.value = '';
+  }, 2000);
 };
+
+const show = () => {
+  if (modalInstance) {
+    modalInstance.show();
+  }
+};
+
+defineExpose({ show });
 </script>
 
   
