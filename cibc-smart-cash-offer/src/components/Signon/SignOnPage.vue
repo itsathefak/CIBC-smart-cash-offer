@@ -35,7 +35,7 @@
   import SignOnForm from './SingOnForm.vue';
   import QuickLinks from './QuickLinks.vue';
   import SecurityInfo from './SecurityInfo.vue';
-  import PromotionalBanner from './PromotionalBanner.vue';
+  import PromotionalBanner from './Promotionalbanner.vue';
   import WelcomeMessage from './WelcomeMessage.vue';
   import FinancialInsights from './FinancialInsights.vue';
   import SpecialOffer from './SpecialOffer.vue';

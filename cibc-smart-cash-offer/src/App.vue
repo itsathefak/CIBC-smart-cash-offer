@@ -24,7 +24,9 @@ body {
   margin: 0;
   padding: 0;
 }
-
+.btn-outline-primary:hover {
+      border-color: transparent !important;
+  }
 .intro-fade-enter-active,
 .intro-fade-leave-active {
   transition: opacity 0.5s ease;

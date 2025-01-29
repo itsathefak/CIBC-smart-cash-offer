@@ -18,6 +18,21 @@ import {
   faHeart,
 } from "@fortawesome/free-solid-svg-icons"
 import { faFacebookF, faTwitter, faLinkedinIn, faInstagram } from "@fortawesome/free-brands-svg-icons"
+import {
+  faMapMarkerAlt,
+  faComments,
+  faMobileAlt,
+  faGlobeAmericas,
+  faDollarSign,
+  faCalendarAlt,
+  faPercentage,
+  faCreditCard,
+  faPlaneArrival,
+  faUserGraduate,
+  faCheckSquare,
+  faExchangeAlt,
+  faVideo,
+} from "@fortawesome/free-solid-svg-icons"
 
 library.add(
   faChartLine,
@@ -34,6 +49,19 @@ library.add(
   faTwitter,
   faLinkedinIn,
   faInstagram,
+  faMapMarkerAlt,
+  faComments,
+  faMobileAlt,
+  faGlobeAmericas,
+  faDollarSign,
+  faCalendarAlt,
+  faPercentage,
+  faCreditCard,
+  faPlaneArrival,
+  faUserGraduate,
+  faCheckSquare,
+  faExchangeAlt,
+  faVideo,
 )
 
 const app = createApp(App)

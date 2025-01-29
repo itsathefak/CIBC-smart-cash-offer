@@ -110,30 +110,7 @@
   .insight-card:hover .image-container img {
     transform: scale(1.1);
   }
-  
-  .icon-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(196, 31, 62, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .insight-card:hover .icon-overlay {
-    opacity: 1;
-  }
-  
-  .icon-overlay svg {
-    font-size: 3rem;
-    color: white;
-  }
-  
+
   h4 {
     color: #333;
     margin-bottom: 1rem;
