@@ -32,10 +32,10 @@
         <div class="footer-section">
           <h4>Connect with Us</h4>
           <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="Facebook"><font-awesome-icon :icon="['fab', 'facebook-f']" /></a>
+            <a href="#" aria-label="Twitter"><font-awesome-icon :icon="['fab', 'twitter']" /></a>
+            <a href="#" aria-label="LinkedIn"><font-awesome-icon :icon="['fab', 'linkedin-in']" /></a>
+            <a href="#" aria-label="Instagram"><font-awesome-icon :icon="['fab', 'instagram']" /></a>
           </div>
         </div>
       </div>
@@ -111,7 +111,23 @@ a:hover {
 }
 
 .social-icons a {
-  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.social-icons a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.social-icons svg {
+  font-size: 1.2rem;
+  color: white;
 }
 
 .footer-bottom {

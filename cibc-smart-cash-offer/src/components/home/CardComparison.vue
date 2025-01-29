@@ -100,10 +100,8 @@ const openModal = (card) => {
 .card-footer .btn-theme {
   background: white;
   border: none;
-  font-weight: bold;
   text-transform: uppercase;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .card-footer .btn-theme:hover {

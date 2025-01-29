@@ -1,9 +1,13 @@
 <template>
-  <router-view></router-view>
+  <div id="app">
+    <PageTransition>
+      <router-view></router-view>
+    </PageTransition>
+  </div>
 </template>
 
 <script setup>
-// No additional script needed
+import PageTransition from './components/PageTransition.vue';
 </script>
 
 <style>

@@ -65,7 +65,10 @@ import { Modal } from 'bootstrap';
 let modalInstance = null;
 
 onMounted(() => {
-  modalInstance = new Modal(document.getElementById('applicationModal'));
+  modalInstance = new Modal(document.getElementById('applicationModal'), {
+    backdrop: 'static',
+    keyboard: false
+  });
 });
 
 const cards = ref([
@@ -114,7 +117,6 @@ const show = () => {
 
 defineExpose({ show });
 </script>
-
   
   <style scoped>
   .card-selection {

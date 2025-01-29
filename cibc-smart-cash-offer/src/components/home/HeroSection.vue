@@ -1,5 +1,11 @@
 <template>
-  <section class="hero-section position-relative overflow-hidden mb-5">
+  <section class="hero-section position-relative overflow-hidden">
+    <div class="animated-background">
+      <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div>
+      <div class="circle circle-3"></div>
+      <img src="https://logos-world.net/wp-content/uploads/2021/05/CIBC-Emblem.png" alt="CIBC Logo" class="floating-logo">
+    </div>
     <div class="container h-100 d-flex flex-column justify-content-center">
       <div class="row">
         <div class="col-lg-6">
@@ -31,8 +37,13 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
 
 const emit = defineEmits(['open-application-modal']);
+
+onMounted(() => {
+  document.body.classList.add('animate__animated', 'animate__fadeIn');
+});
 
 const openApplicationModal = () => {
   emit('open-application-modal');
@@ -47,27 +58,84 @@ const scrollToComparisonSection = () => {
 </script>
 
 <style scoped>
+@import 'animate.css';
 
 .hero-section {
   background: linear-gradient(135deg, #c41e3d, #8b1c41);
   height: 600px;
   color: white;
+  position: relative;
+}
+
+.animated-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  background-color: white;
+}
+
+.circle-1 {
+  width: 250px;
+  height: 250px;
+  top: -50px;
+  right: 10%;
+  animation: float 20s infinite ease-in-out;
+}
+
+.circle-2 {
+  width: 150px;
+  height: 150px;
+  bottom: 20%;
+  left: 5%;
+  animation: float 15s infinite ease-in-out reverse;
+}
+
+.circle-3 {
+  width: 100px;
+  height: 100px;
+  top: 30%;
+  left: 30%;
+  animation: float 18s infinite ease-in-out;
+}
+
+.floating-logo {
+  position: absolute;
+  width: 80px;
+  bottom: 10%;
+  right: 15%;
+  opacity: 0.2;
+  animation: floatLogo 25s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px); }
+}
+
+@keyframes floatLogo {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(15px, -15px) rotate(5deg); }
+  50% { transform: translate(30px, 0px) rotate(0deg); }
+  75% { transform: translate(15px, 15px) rotate(-deg); }
 }
 
 .floating-card {
   position: absolute;
   right: 5%;
-  top: 50%;
+  top: 30%;
   transform: translateY(-50%);
   width: 40%;
   max-width: 400px;
   animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% { transform: translateY(-50%) translateX(0); }
-  50% { transform: translateY(-50%) translateX(-20px); }
-  100% { transform: translateY(-50%) translateX(0); }
 }
 
 .apply-now-btn {
@@ -78,6 +146,28 @@ const scrollToComparisonSection = () => {
   0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
   70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
   100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+.learn-more-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.learn-more-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.5s ease;
+  transform: translate(-50%, -50%) rotate(35deg);
+}
+
+.learn-more-btn:hover::after {
+  width: 0;
+  background: rgba(255, 255, 255, 0.3);
 }
 
 @media (max-width: 991px) {

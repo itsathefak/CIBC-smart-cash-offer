@@ -75,6 +75,7 @@ defineExpose({ updateSignInStatus });
 
 .btn-theme:hover {
   background-color: var(--theme-color-dark);
+  color: white;
   border-color: var(--theme-color-dark);
   transform: translateY(-2px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
