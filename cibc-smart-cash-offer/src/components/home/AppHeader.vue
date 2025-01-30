@@ -12,6 +12,9 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/personal-banking">Personal Banking</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/business-banking">Business Banking</router-link>
+          </li>
           <li class="nav-item" v-for="item in menuItems" :key="item">
             <router-link v-if="item === 'About Us'" class="nav-link" to="/about">{{ item }}</router-link>
             <a v-else class="nav-link" href="#">{{ item }}</a>
@@ -31,7 +34,7 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const menuItems = [ 'Business Banking', 'Investing', 'About Us'];
+const menuItems = [ 'Investing', 'About Us'];
 const isSignedIn = ref(false);
 
 const signOut = () => {

@@ -112,7 +112,7 @@ const scrollToComparisonSection = () => {
   width: 80px;
   bottom: 10%;
   right: 15%;
-  opacity: 0.2;
+  opacity: 0.5;
   animation: floatLogo 25s infinite ease-in-out;
 }
 

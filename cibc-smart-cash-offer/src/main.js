@@ -32,7 +32,17 @@ import {
   faCheckSquare,
   faExchangeAlt,
   faVideo,
+  faUniversity,
+  faStore,
+  faRocket,
+  faLaptop,
+  faSearchDollar,
+  faPhone,
+  faChevronLeft,
+  faChevronRight,
+  faChartBar,
 } from "@fortawesome/free-solid-svg-icons"
+import ScrollReveal from "scrollreveal"
 
 library.add(
   faChartLine,
@@ -62,10 +72,26 @@ library.add(
   faCheckSquare,
   faExchangeAlt,
   faVideo,
+  faUniversity,
+  faStore,
+  faRocket,
+  faLaptop,
+  faSearchDollar,
+  faPhone,
+  faChevronLeft,
+  faChevronRight,
+  faChartBar,
 )
 
 const app = createApp(App)
 app.component("font-awesome-icon", FontAwesomeIcon)
 app.use(router)
+
+app.directive("scroll-reveal", {
+  mounted: (el, binding) => {
+    ScrollReveal().reveal(el, binding.value || {})
+  },
+})
+
 app.mount("#app")
 

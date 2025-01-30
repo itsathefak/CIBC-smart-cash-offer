@@ -1,6 +1,6 @@
 <template>
   <div id="cardComparisonSection" class="card-comparison animate__animated animate__fadeIn">
-    <h2 class="text-center mb-5">Compare Our Cards</h2>
+    <h2 class="text-center section-title  mb-5">Compare Our Cards</h2>
     <div class="row">
       <div class="col-md-4 mb-4" v-for="card in cards" :key="card.name">
         <div class="card h-100 comparison-card">
@@ -83,6 +83,13 @@ const openModal = (card) => {
    border: none;
    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--theme-color);
+  }
 
 .comparison-card:hover {
    transform: translateY(-10px);

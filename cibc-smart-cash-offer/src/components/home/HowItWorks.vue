@@ -1,6 +1,6 @@
 <template>
   <div class="how-it-works mb-5 animate__animated animate__fadeIn">
-    <h2 class="text-center mb-5">How It Works</h2>
+    <h2 class="text-center section-title  mb-5">How It Works</h2>
     <div class="row">
       <div v-for="(step, index) in steps" :key="index" class="col-md-4 mb-4">
         <div class="card h-100 step-card">
@@ -38,6 +38,13 @@ const steps = [
   border: none;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--theme-color);
+  }
 
 .step-card:hover {
   transform: translateY(-10px);
