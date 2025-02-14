@@ -1,93 +1,95 @@
 <template>
-    <div class="sign-on-form">
-      <form @submit.prevent="handleSubmit">
-        <div class="form-group">
-          <label for="cardNumber">Card number</label>
+  <div class="sign-on-form">
+    <form @submit.prevent="handleSubmit">
+      <div class="form-group">
+        <label for="cardNumber">Card number</label>
+        <input 
+          type="text" 
+          id="cardNumber" 
+          v-model="cardNumber" 
+          @input="formatCardNumber"
+          placeholder="Enter your 16-digit card number"
+          maxlength="19"
+          required
+        >
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" id="rememberMe" v-model="rememberMe">
+        <label for="rememberMe">Remember my card</label>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-input">
           <input 
-            type="text" 
-            id="cardNumber" 
-            v-model="cardNumber" 
-            @input="formatCardNumber"
-            placeholder="Enter your 16-digit card number"
-            maxlength="19"
+            :type="showPassword ? 'text' : 'password'" 
+            id="password" 
+            v-model="password" 
+            placeholder="Enter your password"
             required
           >
+          <button type="button" @click="togglePassword" class="btn-show-password">
+            {{ showPassword ? 'Hide' : 'Show' }} password
+          </button>
         </div>
-        <div class="form-group form-check">
-          <input type="checkbox" id="rememberMe" v-model="rememberMe">
-          <label for="rememberMe">Remember my card</label>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <div class="password-input">
-            <input 
-              :type="showPassword ? 'text' : 'password'" 
-              id="password" 
-              v-model="password" 
-              placeholder="Enter your password"
-              required
-            >
-            <button type="button" @click="togglePassword" class="btn-show-password">
-              {{ showPassword ? 'Hide' : 'Show' }} password
-            </button>
-          </div>
-        </div>
-        <div class="form-links">
-          <a href="#" @click.prevent="showForgotPassword">Reset your password</a>
-          <a href="#" @click.prevent="showRegister">Register</a>
-        </div>
-        <button type="submit" class="btn-sign-on">Sign on</button>
-      </form>
-      <div class="security-note">
-        <i class="fas fa-lock"></i> Security guaranteed
-        <a href="#" class="link-agreement">Electronic access agreement</a>
       </div>
+      <div class="form-links">
+        <a href="#" @click.prevent="showForgotPassword">Reset your password</a>
+        <a href="#" @click.prevent="showRegister">Register</a>
+      </div>
+      <button type="submit" class="btn-sign-on">Sign on</button>
+    </form>
+    <div class="security-note">
+      <i class="fas fa-lock"></i> Security guaranteed
+      <a href="#" class="link-agreement">Electronic access agreement</a>
     </div>
-  </template>
-  
-  <script setup>
-  import { ref } from 'vue';
-  
-  const cardNumber = ref('');
-  const password = ref('');
-  const rememberMe = ref(false);
-  const showPassword = ref(false);
-  
-  const formatCardNumber = (event) => {
-    let value = event.target.value.replace(/\s/g, '').replace(/\D/g, '');
-    let formattedValue = '';
-    for (let i = 0; i < value.length; i++) {
-      if (i > 0 && i % 4 === 0) {
-        formattedValue += ' ';
-      }
-      formattedValue += value[i];
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router'; // Import useRouter
+
+const router = useRouter(); // Initialize the router
+
+const cardNumber = ref('');
+const password = ref('');
+const rememberMe = ref(false);
+const showPassword = ref(false);
+
+const formatCardNumber = (event) => {
+  let value = event.target.value.replace(/\s/g, '').replace(/\D/g, '');
+  let formattedValue = '';
+  for (let i = 0; i < value.length; i++) {
+    if (i > 0 && i % 4 === 0) {
+      formattedValue += ' ';
     }
-    cardNumber.value = formattedValue;
-  };
+    formattedValue += value[i];
+  }
+  cardNumber.value = formattedValue;
+};
+
+const handleSubmit = () => {
+  // Handle form submission
+  console.log('Form submitted', { cardNumber: cardNumber.value, password: password.value, rememberMe: rememberMe.value });
   
-  const handleSubmit = () => {
-    // Handle form submission
-    console.log('Form submitted', { cardNumber: cardNumber.value, password: password.value, rememberMe: rememberMe.value });
-    // Emit an event to notify parent component of successful sign-on
-    emit('sign-on-success');
-  };
-  
-  const showForgotPassword = () => {
-    // Show forgot password modal or navigate to forgot password page
-    console.log('Show forgot password');
-  };
-  
-  const showRegister = () => {
-    // Show register modal or navigate to register page
-    console.log('Show register');
-  };
-  
-  const togglePassword = () => {
-    showPassword.value = !showPassword.value;
-  };
-  
-  const emit = defineEmits(['sign-on-success']);
-  </script>
+  // Redirect to /dashboard route after successful sign-on
+  router.push('/dashboard');
+};
+
+const showForgotPassword = () => {
+  // Show forgot password modal or navigate to forgot password page
+  console.log('Show forgot password');
+};
+
+const showRegister = () => {
+  // Show register modal or navigate to register page
+  console.log('Show register');
+};
+
+const togglePassword = () => {
+  showPassword.value = !showPassword.value;
+};
+</script>
   
   <style scoped>
   .sign-on-form {

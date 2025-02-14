@@ -6,6 +6,7 @@ import SignOnPage from "./components/Signon/SignOnPage.vue"
 import PersonalBankingPage from "./components/PersonalBanking/PersonalBankingPage.vue"
 import BusinessBankingPage from "./components/BusinessBanking/BusinessBankingPage.vue"
 import InvestingPage from "./components/Investing/InvestingPage.vue"
+import Dashboard from "./components/Dashboard/Dashboard.vue"
 
 
 const routes = [
@@ -43,6 +44,11 @@ const routes = [
     path: "/sign-on",
     name: "SignOn",
     component: SignOnPage,
+  },
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    component: Dashboard,
   },
 ]
 
