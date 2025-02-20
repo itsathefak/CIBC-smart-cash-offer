@@ -33,7 +33,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import AppHeader from './components/Home/AppHeader.vue';
+import AppHeader from '@/components/Home/AppHeader.vue';
 import HeroSection from './components/Home/HeroSection.vue';
 import CardBenefits from './components/Home/CardBenefits.vue';
 import CashbackCalculator from './components/Home/CashbackCalculator.vue';
