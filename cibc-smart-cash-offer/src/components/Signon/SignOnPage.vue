@@ -1,6 +1,6 @@
 <template>
     <div class="sign-on-page">
-      <Header ref="headerRef" />
+      <AppHeader ref="headerRef" />
       <main>
         <div class="banner-container">
           <img src="https://www.cibc.com/content/dam/cibc-public-assets/about-cibc/corporate-responsibility/images/woman-looking-up-forest-desktop.jpg/_jcr_content/renditions/cq5dam.web.2000.2000.jpeg" alt="CIBC Banner" class="banner-image">
@@ -31,7 +31,7 @@
   
   <script setup>
   import { ref, onMounted } from 'vue';
-  import Header from '../Home/AppHeader.vue';
+  import AppHeader from '../Home/AppHeader.vue';
   import SignOnForm from './SingOnForm.vue';
   import QuickLinks from './QuickLinks.vue';
   import SecurityInfo from './SecurityInfo.vue';
