@@ -34,18 +34,18 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import AppHeader from '@/components/Home/AppHeader.vue';
-import HeroSection from './components/Home/HeroSection.vue';
-import CardBenefits from './components/Home/CardBenefits.vue';
-import CashbackCalculator from './components/Home/CashbackCalculator.vue';
-import HowItWorks from './components/Home/HowItWorks.vue';
-import CardComparison from './components/Home/CardComparison.vue';
-import FAQSection from './components/Home/FAQSection.vue';
-import AppFooter from './components/Home/AppFooter.vue';
-import ApplicationModal from './components/Home/ApplicationModal.vue';
-import FinancialInsights from './components/Home/FinancialInsights.vue';
-import DigitalBanking from './components/Home/DigitalBanking.vue';
-import CustomerTestimonials from './components/Home/CustomerTestimonial.vue';
-import QuestionSearch from './components/Signon/QuestionSearch.vue'
+import HeroSection from '@/components/Home/HeroSection.vue';
+import CardBenefits from '@/components/Home/CardBenefits.vue';
+import CashbackCalculator from '@/components/Home/CashbackCalculator.vue';
+import HowItWorks from '@/components/Home/HowItWorks.vue';
+import CardComparison from '@/components/Home/CardComparison.vue';
+import FAQSection from '@/components/Home/FAQSection.vue';
+import AppFooter from '@/components/Home/AppFooter.vue';
+import ApplicationModal from '@/components/Home/ApplicationModal.vue';
+import FinancialInsights from '@/components/Home/FinancialInsights.vue';
+import DigitalBanking from '@/components/Home/DigitalBanking.vue';
+import CustomerTestimonials from '@/components/Home/CustomerTestimonial.vue';
+import QuestionSearch from '@/components/Signon/QuestionSearch.vue'
 
 
 const applicationModal = ref(null);
