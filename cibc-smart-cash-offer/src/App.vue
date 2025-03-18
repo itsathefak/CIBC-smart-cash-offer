@@ -7,7 +7,18 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
 import PageTransition from '@/components/PageTransition.vue';
+
+onMounted(() => {
+  window.$crisp = [];
+  window.CRISP_WEBSITE_ID = "db52d0b0-bc37-4e9e-be5e-c405d9e7fdfb";
+  
+  const script = document.createElement("script");
+  script.src = "https://client.crisp.chat/l.js";
+  script.async = true;
+  document.head.appendChild(script);
+});
 </script>
 
 <style>
@@ -25,8 +36,8 @@ body {
   padding: 0;
 }
 .btn-outline-primary:hover {
-      border-color: transparent !important;
-  }
+  border-color: transparent !important;
+}
 .intro-fade-enter-active,
 .intro-fade-leave-active {
   transition: opacity 0.5s ease;
@@ -37,4 +48,3 @@ body {
   opacity: 0;
 }
 </style>
-

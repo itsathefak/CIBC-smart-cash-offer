@@ -6,17 +6,19 @@ import path from 'path'
 export default defineConfig({
   plugins: [
     vue(),
-    vuetify({ autoImport: true }),
+    vuetify({ autoImport: true }),  // Auto import Vuetify components
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      '@': path.resolve(__dirname, 'src'),  // Alias '@' to 'src' directory
     },
+    extensions: ['.js', '.ts', '.vue', '.json'],  // Ensure proper extensions are resolved
   },
   server: {
-    port: 3000, 
+    port: 3000,  // Set server port to 3000
   },
   build: {
-    outDir: 'dist',
+    outDir: 'dist',  // Output directory for production build
   },
 })
+
