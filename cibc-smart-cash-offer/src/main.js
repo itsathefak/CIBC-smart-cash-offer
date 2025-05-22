@@ -1,10 +1,11 @@
-import { createApp } from "vue"
-import App from "./App.vue"
-import router from "./router"
-import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap/dist/js/bootstrap.bundle.min.js"
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import "mapbox-gl/dist/mapbox-gl.css";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faChartLine,
   faHome,
@@ -16,8 +17,13 @@ import {
   faUsers,
   faLightbulb,
   faHeart,
-} from "@fortawesome/free-solid-svg-icons"
-import { faFacebookF, faTwitter, faLinkedinIn, faInstagram } from "@fortawesome/free-brands-svg-icons"
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebookF,
+  faTwitter,
+  faLinkedinIn,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 import {
   faMapMarkerAlt,
   faComments,
@@ -41,8 +47,8 @@ import {
   faChevronLeft,
   faChevronRight,
   faChartBar,
-} from "@fortawesome/free-solid-svg-icons"
-import ScrollReveal from "scrollreveal"
+} from "@fortawesome/free-solid-svg-icons";
+import ScrollReveal from "scrollreveal";
 
 library.add(
   faChartLine,
@@ -80,18 +86,17 @@ library.add(
   faPhone,
   faChevronLeft,
   faChevronRight,
-  faChartBar,
-)
+  faChartBar
+);
 
-const app = createApp(App)
-app.component("font-awesome-icon", FontAwesomeIcon)
-app.use(router)
+const app = createApp(App);
+app.component("font-awesome-icon", FontAwesomeIcon);
+app.use(router);
 
 app.directive("scroll-reveal", {
   mounted: (el, binding) => {
-    ScrollReveal().reveal(el, binding.value || {})
+    ScrollReveal().reveal(el, binding.value || {});
   },
-})
+});
 
-app.mount("#app")
-
+app.mount("#app");

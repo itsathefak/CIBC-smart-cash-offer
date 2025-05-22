@@ -1,13 +1,12 @@
-import { createRouter, createWebHistory } from "vue-router"
-import IntroPage from "./components/Main/IntroPage.vue"
-import HomePage from "./HomePage.vue"
-import AboutPage from "./components/About/AboutPage.vue"
-import SignOnPage from "./components/Signon/SignOnPage.vue"
-import PersonalBankingPage from "./components/PersonalBanking/PersonalBankingPage.vue"
-import BusinessBankingPage from "./components/BusinessBanking/BusinessBankingPage.vue"
-import InvestingPage from "./components/Investing/InvestingPage.vue"
-import Dashboard from "./components/Dashboard/Dashboard.vue"
-
+import { createRouter, createWebHistory } from "vue-router";
+import IntroPage from "./components/Main/IntroPage.vue";
+import HomePage from "./HomePage.vue";
+import AboutPage from "./components/About/AboutPage.vue";
+import SignOnPage from "./components/Signon/SignOnPage.vue";
+import PersonalBankingPage from "./components/PersonalBanking/PersonalBankingPage.vue";
+import BusinessBankingPage from "./components/BusinessBanking/BusinessBankingPage.vue";
+import InvestingPage from "./components/Investing/InvestingPage.vue";
+import Dashboard from "./components/Dashboard/Dashboard.vue";
 
 const routes = [
   {
@@ -50,12 +49,11 @@ const routes = [
     name: "Dashboard",
     component: Dashboard,
   },
-]
+];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-})
+});
 
-export default router
-
+export default router;

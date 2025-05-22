@@ -2,7 +2,10 @@
   <div>
     <AppHeader />
     <main>
-      <HeroSection @open-application-modal="openApplicationModal" />
+      <HeroSection
+        @open-application-modal="openApplicationModal"
+        @open-map-modal="showMap = true"
+      />
       <div class="container">
         <div class="row my-5">
           <div class="col-lg-8">
@@ -20,35 +23,41 @@
         <FAQSection />
         <div class="text-center my-5">
           <h2 class="mb-4">Ready to Apply?</h2>
-          <button @click="openApplicationModal" class="btn btn-apply-now btn-lg">Apply Now</button>
+          <button
+            @click="openApplicationModal"
+            class="btn btn-apply-now btn-lg"
+          >
+            Apply Now
+          </button>
         </div>
       </div>
       <QuestionSearch />
-
     </main>
     <AppFooter />
     <ApplicationModal ref="applicationModal" />
+    <MapModal v-model="showMap" />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import AppHeader from '@/components/Home/AppHeader.vue';
-import HeroSection from '@/components/Home/HeroSection.vue';
-import CardBenefits from '@/components/Home/CardBenefits.vue';
-import CashbackCalculator from '@/components/Home/CashbackCalculator.vue';
-import HowItWorks from '@/components/Home/HowItWorks.vue';
-import CardComparison from '@/components/Home/CardComparison.vue';
-import FAQSection from '@/components/Home/FAQSection.vue';
-import AppFooter from '@/components/Home/AppFooter.vue';
-import ApplicationModal from '@/components/Home/ApplicationModal.vue';
-import FinancialInsights from '@/components/Home/FinancialInsights.vue';
-import DigitalBanking from '@/components/Home/DigitalBanking.vue';
-import CustomerTestimonials from '@/components/Home/CustomerTestimonial.vue';
-import QuestionSearch from '@/components/Signon/QuestionSearch.vue'
-
+import { ref, onMounted } from "vue";
+import AppHeader from "@/components/Home/AppHeader.vue";
+import HeroSection from "@/components/Home/HeroSection.vue";
+import CardBenefits from "@/components/Home/CardBenefits.vue";
+import CashbackCalculator from "@/components/Home/CashbackCalculator.vue";
+import HowItWorks from "@/components/Home/HowItWorks.vue";
+import CardComparison from "@/components/Home/CardComparison.vue";
+import FAQSection from "@/components/Home/FAQSection.vue";
+import AppFooter from "@/components/Home/AppFooter.vue";
+import ApplicationModal from "@/components/Home/ApplicationModal.vue";
+import FinancialInsights from "@/components/Home/FinancialInsights.vue";
+import DigitalBanking from "@/components/Home/DigitalBanking.vue";
+import CustomerTestimonials from "@/components/Home/CustomerTestimonial.vue";
+import QuestionSearch from "@/components/Signon/QuestionSearch.vue";
+import MapModal from "@/components/Map/MapModal.vue";
 
 const applicationModal = ref(null);
+const showMap = ref(false);
 
 const openApplicationModal = () => {
   if (applicationModal.value) {
@@ -57,22 +66,25 @@ const openApplicationModal = () => {
 };
 
 onMounted(() => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
-      }
-    });
-  }, { threshold: 0.1 });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate__animated", "animate__fadeInUp");
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
 
-  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+  document.querySelectorAll(".animate-on-scroll").forEach((el) => {
     observer.observe(el);
   });
 });
 </script>
 
 <style scoped>
-@import 'animate.css';
+@import "animate.css";
 
 .btn-apply-now {
   background-color: white;
@@ -96,4 +108,3 @@ onMounted(() => {
   opacity: 1;
 }
 </style>
-

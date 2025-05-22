@@ -4,32 +4,50 @@
       <div class="circle circle-1"></div>
       <div class="circle circle-2"></div>
       <div class="circle circle-3"></div>
-      <img src="https://logos-world.net/wp-content/uploads/2021/05/CIBC-Emblem.png" alt="CIBC Logo" class="floating-logo">
+      <img
+        src="https://logos-world.net/wp-content/uploads/2021/05/CIBC-Emblem.png"
+        alt="CIBC Logo"
+        class="floating-logo"
+      />
     </div>
     <div class="container h-100 d-flex flex-column justify-content-center">
       <div class="row">
         <div class="col-lg-6">
-          <h1 class="display-4 fw-bold text-white mb-4 animate__animated animate__fadeInLeft">
+          <h1
+            class="display-4 fw-bold text-white mb-4 animate__animated animate__fadeInLeft"
+          >
             Get a $300 Cash Bonus
           </h1>
-          <p class="lead text-white mb-5 animate__animated animate__fadeInLeft animate__delay-1s">
+          <p
+            class="lead text-white mb-5 animate__animated animate__fadeInLeft animate__delay-1s"
+          >
             Plus, earn up to 5% cash back for the first 4 months
           </p>
           <div class="animate__animated animate__fadeInUp animate__delay-2s">
-            <button type="button" class="btn btn-light btn-lg me-3 apply-now-btn" @click="openApplicationModal">
+            <button
+              type="button"
+              class="btn btn-light btn-lg me-3 apply-now-btn"
+              @click="openApplicationModal"
+            >
               Apply Now
             </button>
-            <button class="btn btn-outline-light btn-lg learn-more-btn" @click="scrollToComparisonSection">
-              Learn More
+            <button
+              type="button"
+              class="btn btn-outline-light btn-lg"
+              @click="openMapModal"
+            >
+              Find a Branch
             </button>
           </div>
         </div>
       </div>
     </div>
-    <div class="floating-card animate__animated animate__fadeInRight animate__delay-1s">
-      <img 
-        src="https://www.cibc.com/content/dam/global-assets/card-art/credit-cards/aventura-cards/cibc-aventura-visa-infinite-card/cibc-visa-aventura-infinite-en.png/_jcr_content/renditions/cq5dam.web.1280.1280.png" 
-        alt="CIBC Dividend Visa Infinite Card" 
+    <div
+      class="floating-card animate__animated animate__fadeInRight animate__delay-1s"
+    >
+      <img
+        src="https://www.cibc.com/content/dam/global-assets/card-art/credit-cards/aventura-cards/cibc-aventura-visa-infinite-card/cibc-visa-aventura-infinite-en.png/_jcr_content/renditions/cq5dam.web.1280.1280.png"
+        alt="CIBC Dividend Visa Infinite Card"
         class="img-fluid"
       />
     </div>
@@ -37,28 +55,36 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted } from "vue";
 
-const emit = defineEmits(['open-application-modal']);
+// now emits two events
+const emit = defineEmits(["open-application-modal", "open-map-modal"]);
 
 onMounted(() => {
-  document.body.classList.add('animate__animated', 'animate__fadeIn');
+  document.body.classList.add("animate__animated", "animate__fadeIn");
 });
 
+// already working
 const openApplicationModal = () => {
-  emit('open-application-modal');
+  emit("open-application-modal");
 };
 
+// new method—this was missing!
+const openMapModal = () => {
+  emit("open-map-modal");
+};
+
+// if you still need scroll for comparison:
 const scrollToComparisonSection = () => {
-  const comparisonSection = document.getElementById('cardComparisonSection');
+  const comparisonSection = document.getElementById("cardComparisonSection");
   if (comparisonSection) {
-    comparisonSection.scrollIntoView({ behavior: 'smooth' });
+    comparisonSection.scrollIntoView({ behavior: "smooth" });
   }
 };
 </script>
 
 <style scoped>
-@import 'animate.css';
+@import "animate.css";
 
 .hero-section {
   background: linear-gradient(135deg, #c41e3d, #8b1c41);
@@ -117,15 +143,29 @@ const scrollToComparisonSection = () => {
 }
 
 @keyframes float {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(20px); }
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(20px);
+  }
 }
 
 @keyframes floatLogo {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  25% { transform: translate(15px, -15px) rotate(5deg); }
-  50% { transform: translate(30px, 0px) rotate(0deg); }
-  75% { transform: translate(15px, 15px) rotate(-deg); }
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(15px, -15px) rotate(5deg);
+  }
+  50% {
+    transform: translate(30px, 0px) rotate(0deg);
+  }
+  75% {
+    transform: translate(15px, 15px) rotate(-deg);
+  }
 }
 
 .floating-card {
@@ -143,9 +183,15 @@ const scrollToComparisonSection = () => {
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
-  70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
 }
 
 .learn-more-btn {
@@ -154,7 +200,7 @@ const scrollToComparisonSection = () => {
 }
 
 .learn-more-btn::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -187,4 +233,3 @@ const scrollToComparisonSection = () => {
   }
 }
 </style>
-
